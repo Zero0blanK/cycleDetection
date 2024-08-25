@@ -1,3 +1,4 @@
+let linkedData;
 
 const hare = document.getElementById("hare");
 const turtle = document.getElementById("turtle");
@@ -97,6 +98,49 @@ const turtleTiming_2 = {
 };
 
 
+(function renderSelectFileButton(){
+  const selectFileButton = document.getElementById('selectFile')
+  if(selectFileButton){
+    selectFileButton.addEventListener('click',async ()=>{
+      linkedData = await getFile()
+    })
+  }
+})();
+
+async function getFile(){
+    const [fileHandle] = await window.showOpenFilePicker({
+      types: [
+        {
+          description: 'Text Files',
+          accept: {
+            'text/plain': ['.txt']
+          }
+        }
+      ],
+      multiple: false // Only allow single file selection
+    });{
+  
+}
+
+    // Get the file object from the file handle
+    const file = await fileHandle.getFile();
+    const textField = document.getElementById('textField')
+    textField.classList.add('active')
+    textField.value = fileHandle.name
+    
+    // Read the file content
+    const fileContent = await file.text();
+    const formattedArray = fileContent.split('|')
+    const linkedListObjects = []
+    for(let i = 0;i<formattedArray.length;i++){
+      const linkedListValue = formattedArray[i].split(',')
+      if(linkedListValue.length  === 3){
+        linkedListObjects.push({id:linkedListValue[0],data:linkedListValue[1],next:linkedListValue[2]})
+
+      }
+    }
+    return linkedListObjects
+}
 
 
 
@@ -105,6 +149,7 @@ function activate() {
 
 // let say ang kaning timer is execution sa cycle detection if cycle detected e true niya ang condition else kay false 
   let isCycle = false;
+  console.log(linkedData)
 
   setTimeout(() => {
 
@@ -136,3 +181,4 @@ function activate() {
 
 }
 
+window.activate = activate

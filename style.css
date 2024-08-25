@@ -123,13 +123,14 @@ h1{
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 1.5rem;
-    background-color: #54EF75;
+    background-color: #288318;
+    color: rgb(214, 214, 214);
     cursor: pointer;
 }
 
 .fileContainer button:hover{
-    background-color: #288318;
-    color: rgb(175, 175, 175);
+    background-color: #54EF75;
+    color: black;
 }
 
 .fileContainer button:active{
@@ -140,7 +141,7 @@ h1{
 #textField{
     background-color: white;
     color: rgb(150, 150, 150);
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: left;
     border: none;
     border-radius: 5px;
@@ -149,6 +150,9 @@ h1{
     padding-left: 30px;
 }
 
+#textField.active{
+    color: black;
+}
 .instructionContainer{
     display: flex;
     flex-direction: column;
@@ -159,8 +163,8 @@ h1{
 
 .instructionContainer p{
     background-color: white;
-    line-height: 2;
-    min-height: 10rem;
+    line-height: 1.8;
+    min-height: 12rem;
     width: 20rem;
     padding: 20px;
     font-size: 1.3rem;
