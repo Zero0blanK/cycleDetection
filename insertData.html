@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <a class="back-icon" href="index.html"><img src="img/back.png" alt=""></a>
+        <div class="title">Cycle Detection (Insert Data)</div>
+    </div>
+    <div class="container">
+        <div class="left-container">
+            <div class="fileContainer">
+                <h4>Insert Data:</h4>
+                <input type="text" placeholder="Data" id="dataInput">
+                <input type="text" placeholder="Next Node" id="nextNodeInput">
+                <button id="insert" onclick="addRow()" >Insert</button>
+            </div>
+            <div class="tableContainer">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Next</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="cycleAnimation" id="cycleAnimation">
+                <div class="node">
+                    <img class="turtle" id=turtle src="img/turtle.png" alt="">
+                    <img class="hare" id="hare" src="img/rabbit.png" alt="">
+                </div>
+                <div class="boxContainer">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                </div>
+                <div><h1 id="result"></h1></div>
+            </div>
+            <div class="btn-data">
+                <button onclick="activate()">START</button>
+                <button id="fullLogs" onclick="">Show Full Logs</button>
+            </div>
+        </div>  
+    </div>
+    <script src="animation.js"></script>
+    <script src="table.js"></script>
+</body>
+</html>

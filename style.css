@@ -1,0 +1,320 @@
+/* CSS OUTLINE
+    - landing page
+    - Insert File Styling
+    - Insert Data Styling
+    - Cycle Animation
+*/
+
+
+*{
+    margin: 0;
+    background-color: #0d1117;
+}
+
+h4{
+    font-size: 2.3rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: white;
+}
+
+h1{
+    color: white;
+    font-size: 3.5rem;
+}
+
+/* landing page */
+
+.title{
+    font-size: 6rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1rem;
+    color: #58E741;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 4px solid #58E741;
+}
+
+.icon{
+    display: inline;
+    background: none;
+    margin-right: 15px;
+}
+
+.back-icon {
+    position: absolute;
+    left: 0;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 85vh;
+}
+
+.btn-container button{
+    border: none;
+    color: white;
+    font-size: 3rem;
+    height: 10rem;
+    width: 22rem;
+    background: linear-gradient(to bottom, #69B95B 0%, #2F5329 100%);
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.btn-container button:hover{
+    transition: ease 0.5s;
+    background: linear-gradient(to bottom, #508d45 0%, #22471b 100%);
+}
+
+
+/* FOR INSERT FILE STYLING */
+/* left container for insert file */
+.left-container{
+    display: flex;
+    flex-direction: column;
+    height:85vh;
+    width: 90vh;
+    margin-left: 3rem;
+}
+
+.fileContainer{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    margin: 5rem;
+}
+
+.fileContainer button{
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    background-color: #54EF75;
+    cursor: pointer;
+}
+
+.fileContainer button:hover{
+    background-color: #288318;
+    color: rgb(175, 175, 175);
+}
+
+.fileContainer button:active{
+    background-color: #1ec700;
+    color: rgb(230, 230, 230);
+}
+
+#textField{
+    background-color: white;
+    color: rgb(150, 150, 150);
+    font-size: 1rem;
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
+.instructionContainer{
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    margin-left: 5rem;  
+    margin-top: 2rem; 
+}
+
+.instructionContainer p{
+    background-color: white;
+    line-height: 2;
+    min-height: 10rem;
+    width: 20rem;
+    padding: 20px;
+    font-size: 1.3rem;
+}
+
+
+/* FOR INSERT DATA STYLING */
+/* right container for insert file */
+.right-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rem;
+    align-items: center;
+}
+
+.right-container button{
+    font-size: 50px;
+    font-weight: 500;
+    border-radius: 30px;
+    border: none;
+    background-color: #54EF75;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 4rem;
+    width: 14rem;
+    cursor: pointer;
+}
+
+.right-container button:hover{
+    background-color: #499c3b;
+}
+
+.right-container button:active{
+    background-color: #58b947;
+}
+
+/* FOR CYCLE ANIMATION */
+.hidden {
+    visibility: hidden;
+}
+
+.cycleAnimation{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 2rem;
+    width: 40rem;
+    height: 20rem;
+    align-items: center;
+}
+
+.node{
+    margin-right: 23.6rem;
+}
+
+#hare {
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    background: none;
+    transform: translateY(-30px);
+    padding-left: 95px;
+}
+
+#turtle {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    background: none;
+    transform: translateY(-20px);
+}
+
+.boxContainer{
+    display: flex;
+    gap: 20px;
+    margin-top: 3rem;
+    margin-bottom: 7rem;
+    color: rgb(0, 0, 0);
+}
+
+.box{
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    width: 5rem;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* FOR INSERT DATA STYLING */
+#dataInput{
+    background-color: white;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border:none;   
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#nextNodeInput{
+    background-color: white;
+    font-size: 1.5rem;
+    border:none;   
+    border-radius: 5px;
+    padding: 15px 30px;
+    color: #313131;
+}
+
+#insert{
+    font-size: 2rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #69B95B 0%, #2F5329 100%);
+    color: white;
+}
+
+#insert:hover{
+    background: linear-gradient(to right, #78d467 0%, #4b8b3f 100%);
+}
+
+#insert:active{
+    background: linear-gradient(to right, #46793d 0%, #267718 100%);
+}
+
+.tableContainer{
+    color: rgb(0, 0, 0);
+    width: 20rem;
+    margin-left:5rem ;
+}
+
+#dataTable{
+    background-color: white;
+}
+
+tr{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+    border-bottom: 1px solid #000000;
+}
+
+table {
+    width: 100%;
+    margin: 10px auto;
+    border-collapse: collapse;
+    display: block;
+    height: 15rem;
+    overflow-y: scroll; 
+}
+
+th, td {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-data{
+    position: relative;
+}
+
+#fullLogs{
+    font-size: 1.8rem;
+    position: absolute;
+    transform: translate(20rem,8rem);
+    width: 15rem;
+    padding-right: 15px;
+    padding-left: 15px;
+}
