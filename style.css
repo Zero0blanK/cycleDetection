@@ -5,10 +5,15 @@
     - Cycle Animation
 */
 
+@font-face {
+    font-family: 'Sofia';
+    src: url('./fonts/SofiaSans-VariableFont_wght.ttf');
+}
 
 *{
     margin: 0;
     background-color: #0d1117;
+    font-family: 'Sofia';
 }
 
 h4{
@@ -40,11 +45,21 @@ h1{
     position: relative;
     border-bottom: 4px solid #58E741;
 }
+.iconContainer{
+    position: relative;
+    padding-left: 60px;
+}
 
 .icon{
-    display: inline;
+    position: absolute;
     background: none;
+    left: 15px;
+    top: 50px;
     margin-right: 15px;
+}
+
+#fileIcon {
+    left:30px;
 }
 
 .back-icon {
@@ -60,7 +75,8 @@ h1{
 
 .btn-container{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 0px 600px;
     align-items: center;
     height: 85vh;
 }
