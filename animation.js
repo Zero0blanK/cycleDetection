@@ -80,8 +80,6 @@ const slow_3 = [
   { transform: "translate(140px, -55px)" }, // Move up and to the right
   { transform: "translate(200px, -20px)" },
   { transform: "translate(200px, -20px)" }, // Start at the initial position
-  { transform: "translate(240px, -55px)" }, // Move up and to the right
-  { transform: "translate(300px, -20px)" }
 ];
 
 const turtleTiming = {
@@ -92,7 +90,7 @@ const turtleTiming = {
 };
 
 const turtleTiming_2 = {
-  duration: 3500,
+  duration: 3000,
   iterations: 1,
   easing: "ease-in",
   fill: "forwards",
@@ -101,7 +99,7 @@ const turtleTiming_2 = {
 
 
 
-cycleAnimation.classList.add("hidden");
+
 
 function activate() {
 
@@ -110,12 +108,12 @@ function activate() {
 
   setTimeout(() => {
 
-    isCycle = false;
+    isCycle = true;
 
-    result.textContent = "CYCLE DETECTED!";
     cycleAnimation.classList.remove("hidden");
-
+    
     if (isCycle) {
+      result.textContent = "CYCLE DETECTED!";
       hare.animate(fast, hareTiming);
       turtle.animate(slow, turtleTiming);
 
@@ -127,12 +125,14 @@ function activate() {
       // Hide animation after 15 secs
       setTimeout(() => cycleAnimation.classList.add("hidden"), 15000);
       return;
-    }
-    result.textContent = "NO CYCLE DETECTED!";
-    hare.animate(fast, hareTiming);
-    turtle.animate(slow_3, turtleTiming_2);
+    }else{
+      hare.animate(fast, hareTiming);
+      turtle.animate(slow_3, turtleTiming_2);
+      setTimeout(()=>result.textContent = "NO CYCLE DETECTED!",3000);
 
-  }, 2000);
+    }
+
+  }, 100);
 
 }
 
