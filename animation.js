@@ -178,6 +178,15 @@ function clearBoxValue(){
   hideLogsButton()
 }
 
+(function renderFullLogsButton(){
+  const container = document.getElementById('container')
+  const title = document.getElementById('title')
+  logsButton.addEventListener('click',()=>{
+    container.classList.add('hidden')
+    title.textContent = 'Cycle Detection (Logs)'
+  })
+})()
+
 function clearAnimation(){
   if(turtleAnimation)turtleAnimation.cancel()
   turtle.style.transform = 'transform(-120px,-30px)'
