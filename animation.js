@@ -8,6 +8,10 @@ const turtle = document.getElementById("turtle");
 const cycleAnimation = document.getElementById("cycleAnimation");
 const result = document.getElementById("result");
 
+const box1 = document.getElementById('box1')
+const box2 = document.getElementById('box2')
+const box3 = document.getElementById('box3')
+const box4 = document.getElementById('box4')
 
 // CYCLE ANIMATION
 // first animation for hare
@@ -156,15 +160,24 @@ function getTableData(){
   }
   return linkedData
 }
+
+function clearBoxValue(){
+  box1.textContent = '1'
+  box2.textContent = '2'
+  box3.textContent = '3'
+  box4.textContent = '4'
+}
+
 function activate() {
   const errorText = document.getElementById('errorText')
   result.textContent = ''
+  clearBoxValue()
 // let say ang kaning timer is execution sa cycle detection if cycle detected e true niya ang condition else kay false 
   linkedData = getTableData()
   const ll = new LinkedList()
   ll.createGraph(linkedData)
   let isCycle = ll.checkCycle();
-  
+  const threeNodes = ll.getLastThreeNodes()
   if(linkedData === false 
     || linkedData === undefined 
     || linkedData ===null
@@ -173,10 +186,20 @@ function activate() {
       return
     }
   errorText.classList.remove('active')
+  box1.textContent = ll.head.data
+  if(isCycle){
+    box2.textContent = isCycle?isCycle.startPoint.data:'2'
+    box3.textContent = isCycle?isCycle.middlePoint.data:'3'
+    box4.textContent = isCycle?isCycle.endPoint.data :'4'
+  }else if(threeNodes){
+    box2.textContent = threeNodes.startPoint.data
+    box3.textContent = threeNodes.middlePoint.data
+    box4.textContent = threeNodes.endPoint.data
+  }
   setTimeout(() => {
-
-
-
+    
+    
+    
     cycleAnimation.classList.remove("hidden");
     
     if (isCycle) {
@@ -199,7 +222,7 @@ function activate() {
 
     }
 
-  }, 100);
+  }, 500);
 
 }
 

@@ -12,6 +12,21 @@ class LinkedList{
     this.head = null
   }
 
+  getLastThreeNodes(){
+    if(this.head?.next?.next?.next === null||
+      this.head?.next?.next?.next === undefined
+      |this.checkCycle() !== false
+    ) return false
+    let startPoint = this.head.next
+    let middlePoint = this.head.next.next
+    let  endPoint = this.head.next.next.next
+    while(endPoint.next !== null){
+      startPoint = startPoint.next
+      middlePoint = middlePoint.next
+      endPoint = endPoint.next
+    }
+    return{startPoint:startPoint,middlePoint:middlePoint,endPoint:endPoint}
+  }
   checkCycle(){
     if(this.head === null) return false
     let tortoise = this.head
