@@ -20,7 +20,7 @@
             </div>
             <div class="instructionContainer">
                 <h4>Instruction</h4>
-                <p>1. txt file format should be like this<br>id, data, next | id, data, next |<br>e.g: 1, 23, 2, | 2, 34, null |    <br><br>2. No empty values if no value type -> null</p>
+                <p>1. txt file format should be like this<br>id, data, next | id, data, next |<br>e.g: 1, 23, 2| 2, 34, null |    <br><br>2. No empty values if no value type -> null</p>
             </div>
         </div>
         <div class="right-container">
@@ -36,11 +36,12 @@
                     <div class="box">4</div>
                 </div>
                 <div><h1 id="result"></h1></div>
+                <div id="errorText" class="error">ERROR EMPTY DATASET</div>
             </div>
             <button onclick="activate()">START</button>
         </div>  
     </div>
+    <script type="module" src="graph.js"></script>
     <script type="module" defer  src="animation.js"></script>
-    <script type="module" defer  src="insertFile.js"></script>
 </body>
 </html>

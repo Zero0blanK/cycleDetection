@@ -1,3 +1,6 @@
+import { LinkedList } from "./graph.js";
+
+
 let linkedData;
 
 const hare = document.getElementById("hare");
@@ -143,37 +146,56 @@ async function getFile(){
 }
 
 
-
-
+function getTableData(){
+  const table = document.getElementById('dataTable')?.getElementsByTagName('tbody')[0];
+  if(table){
+    const tableData = Array.from((table.getElementsByTagName('tr'))).map((row)=>{
+      return {id:(row.children[0]).innerHTML,data:(row.children[1]).innerHTML,next:(row.children[2]).innerHTML}
+    })
+    return tableData
+  }
+  return linkedData
+}
 function activate() {
-
+  const errorText = document.getElementById('errorText')
+  result.textContent = ''
 // let say ang kaning timer is execution sa cycle detection if cycle detected e true niya ang condition else kay false 
-  let isCycle = false;
-  console.log(linkedData)
-
+  linkedData = getTableData()
+  const ll = new LinkedList()
+  ll.createGraph(linkedData)
+  let isCycle = ll.checkCycle();
+  
+  if(linkedData === false 
+    || linkedData === undefined 
+    || linkedData ===null
+    || linkedData.length === 0) {
+      errorText.classList.add('active')
+      return
+    }
+  errorText.classList.remove('active')
   setTimeout(() => {
 
-    isCycle = true;
+
 
     cycleAnimation.classList.remove("hidden");
     
     if (isCycle) {
-      result.textContent = "CYCLE DETECTED!";
       hare.animate(fast, hareTiming);
       turtle.animate(slow, turtleTiming);
-
+      
       setTimeout(() => {
         hare.animate(fast_2, hareTiming_2);
         turtle.animate(slow_2, turtleTiming);
       }, 2000);
-
+      
+      setTimeout(()=>result.textContent = "CYCLE DETECTED!",4500);
       // Hide animation after 15 secs
       setTimeout(() => cycleAnimation.classList.add("hidden"), 15000);
       return;
     }else{
       hare.animate(fast, hareTiming);
       turtle.animate(slow_3, turtleTiming_2);
-      setTimeout(()=>result.textContent = "NO CYCLE DETECTED!",3000);
+      setTimeout(()=>result.textContent = "NO CYCLE DETECTED!",3500);
 
     }
 

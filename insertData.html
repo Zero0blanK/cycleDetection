@@ -32,6 +32,7 @@
                     </tbody>
                 </table>
             </div>
+            <button id="clearButton" class="clearButton">Clear</button>
         </div>
         <div class="right-container">
             <div class="cycleAnimation" id="cycleAnimation">
@@ -46,6 +47,7 @@
                     <div class="box">4</div>
                 </div>
                 <div><h1 id="result"></h1></div>
+                <div id="errorText" class="error">ERROR EMPTY DATASET</div>
             </div>
             <div class="btn-data">
                 <button onclick="activate()">START</button>
@@ -53,7 +55,8 @@
             </div>
         </div>  
     </div>
-    <script type="module" defer src="animation.js"></script>
     <script type="module" src="table.js"></script>
+    <script type="module" src="graph.js"></script>
+    <script type="module" defer src="animation.js"></script>
 </body>
 </html>

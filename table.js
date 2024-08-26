@@ -1,4 +1,14 @@
 
+(function clearRow(){
+    const clearButton = document.getElementById('clearButton')
+    if(clearButton){
+        clearButton.addEventListener('click',()=>{
+
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0]
+            tableBody.innerHTML = ''
+        })
+    }
+})();
 
 function addRow() {
     const data = document.getElementById('dataInput').value.trim();
