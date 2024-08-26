@@ -7,7 +7,9 @@ const hare = document.getElementById("hare");
 const turtle = document.getElementById("turtle");
 const cycleAnimation = document.getElementById("cycleAnimation");
 const result = document.getElementById("result");
-
+const logsButton = document.getElementById('fullLogs')
+let hareAnimation
+let turtleAnimation
 const box1 = document.getElementById('box1')
 const box2 = document.getElementById('box2')
 const box3 = document.getElementById('box3')
@@ -137,6 +139,8 @@ async function getFile(){
     
     // Read the file content
     const fileContent = await file.text();
+    clearAnimation()
+    clearBoxValue()
     const formattedArray = fileContent.split('|')
     const linkedListObjects = []
     for(let i = 0;i<formattedArray.length;i++){
@@ -161,17 +165,31 @@ function getTableData(){
   return linkedData
 }
 
+function hideLogsButton(){
+  logsButton.classList.remove('active')
+}
+
 function clearBoxValue(){
   box1.textContent = '1'
   box2.textContent = '2'
   box3.textContent = '3'
-  box4.textContent = '4'
+  box4.textContent = '4'  
+  result.textContent = ''
+  hideLogsButton()
+}
+
+function clearAnimation(){
+  if(turtleAnimation)turtleAnimation.cancel()
+  turtle.style.transform = 'transform(-120px,-30px)'
+  if(hareAnimation)hareAnimation.cancel()
+  hare.style.transform = 'transform(-120px,-30px)'
 }
 
 function activate() {
   const errorText = document.getElementById('errorText')
   result.textContent = ''
   clearBoxValue()
+  clearAnimation()
 // let say ang kaning timer is execution sa cycle detection if cycle detected e true niya ang condition else kay false 
   linkedData = getTableData()
   const ll = new LinkedList()
@@ -201,24 +219,27 @@ function activate() {
     
     
     cycleAnimation.classList.remove("hidden");
-    
     if (isCycle) {
       hare.animate(fast, hareTiming);
       turtle.animate(slow, turtleTiming);
       
       setTimeout(() => {
-        hare.animate(fast_2, hareTiming_2);
-        turtle.animate(slow_2, turtleTiming);
+        hareAnimation = hare.animate(fast_2, hareTiming_2);
+        turtleAnimation = turtle.animate(slow_2, turtleTiming);
       }, 2000);
       
-      setTimeout(()=>result.textContent = "CYCLE DETECTED!",4500);
-      // Hide animation after 15 secs
-      setTimeout(() => cycleAnimation.classList.add("hidden"), 15000);
+      setTimeout(()=>{
+        result.textContent = "CYCLE DETECTED!"
+        logsButton.classList.add('active')
+      },4500);
       return;
     }else{
-      hare.animate(fast, hareTiming);
-      turtle.animate(slow_3, turtleTiming_2);
-      setTimeout(()=>result.textContent = "NO CYCLE DETECTED!",3500);
+      hareAnimation = hare.animate(fast, hareTiming);
+      turtleAnimation = turtle.animate(slow_3, turtleTiming_2);
+      setTimeout(()=>{
+        result.textContent = "NO CYCLE DETECTED!"
+        logsButton.classList.add('active')
+      },3500);
 
     }
 
@@ -227,3 +248,5 @@ function activate() {
 }
 
 window.activate = activate
+
+export {clearAnimation,clearBoxValue,hideLogsButton}

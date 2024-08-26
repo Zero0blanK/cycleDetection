@@ -105,7 +105,7 @@ h1{
     display: flex;
     flex-direction: column;
     height:85vh;
-    width: 90vh;
+    width: 70vh;
     margin-left: 3rem;
 }
 
@@ -360,8 +360,13 @@ th, td {
     position: absolute;
     transform: translate(20rem,8rem);
     width: 15rem;
+    margin-left: 100px;
     padding-right: 15px;
     padding-left: 15px;
+    visibility: hidden;
+}
+#fullLogs.active{
+    visibility: visible;
 }
 .clearButton{
     width: 240px;

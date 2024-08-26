@@ -1,4 +1,4 @@
-
+import {clearAnimation,clearBoxValue, hideLogsButton} from './animation.js'
 (function clearRow(){
     const clearButton = document.getElementById('clearButton')
     if(clearButton){
@@ -6,6 +6,9 @@
 
             const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0]
             tableBody.innerHTML = ''
+            clearAnimation()
+            clearBoxValue()
+            hideLogsButton()
         })
     }
 })();
