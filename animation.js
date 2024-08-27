@@ -186,6 +186,7 @@ function clearBoxValue(){
     fullLogsContainer.innerHTML = ''
     title.textContent = 'Cycle Detection (Logs)'
     const nodeNumber  = ll.getLength()
+    const isCycle = ll.checkCycle()
     let row;
     let node;
     let pointer = ll.head;
@@ -234,17 +235,34 @@ function clearBoxValue(){
       }
 
       const quotientOfLenght = Math.floor(nodeNumber/5) 
-      if(remainder === 4 && quotient !== quotientOfLenght){
+      if(remainder === 4 && quotient !== quotientOfLenght && nodeNumber > 5){
         const downArrow = document.createElement('span')
         downArrow.classList.add('downArrow')
         node.appendChild(downArrow)
       }
-
+      
+      
+      node.setAttribute('data-id',pointer.id)
       row.appendChild(node)
-
+      
       if(remainder === 4 || i === nodeNumber - 1){
         fullLogsContainer.appendChild(row)
       }
+      
+      if(isCycle && i === nodeNumber-1){
+        const endNodeId = isCycle.endPoint.id
+        node = document.querySelector(`.graph[data-id="${endNodeId}"]`)
+        const redDownArrow = document.createElement('span')
+        redDownArrow.classList.add('redDownArrow')
+        node.appendChild(redDownArrow)
+        const starterCycleNode = isCycle.startPoint
+        const starterCycleElement = document.querySelector(`.graph[data-id="${starterCycleNode.id}"]`)
+        const endPointPos = node.getBoundingClientRect()
+        const startPointPos = starterCycleElement.getBoundingClientRect()
+        const xOffset = endPointPos - startPointPos
+      }
+
+
       pointer = pointer.next
 
     }
