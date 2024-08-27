@@ -180,19 +180,73 @@ function clearBoxValue(){
 (function renderFullLogsButton(){
   const container = document.getElementById('container')
   const title = document.getElementById('title')
+  const fullLogsContainer = document.getElementById('fullLogsContainer')
   logsButton.addEventListener('click',()=>{
     container.classList.add('hidden')
+    fullLogsContainer.innerHTML = ''
     title.textContent = 'Cycle Detection (Logs)'
     const nodeNumber  = ll.getLength()
     let row;
+    let node;
+    let pointer = ll.head;
     for(let i = 0;i< nodeNumber;i++){
-      if(i === 0){
+      
+      const quotient = Math.floor(i/5)
+      const remainder = i % 5
+      if(quotient % 2 !== 1 && (remainder === 5 || remainder === 0)){
         row = document.createElement('div')
         row.classList.add('graphContainer')
         row.classList.add('row')
+      }else if(quotient % 2 === 1 && remainder === 0){
+        row = document.createElement('div')
+        row.classList.add('graphContainer')
+        row.classList.add('rowReverse')
       }
-      const quotient = i/5
-      if(quotient % 2 ===0)return
+      if(i === 0){
+        node = document.createElement('div')
+        node.classList.add('graph') 
+        node.textContent = pointer.data
+        const headText = document.createElement('span')
+        headText.classList.add('headText')
+        headText.textContent = 'Head'
+        node.appendChild(headText)
+        const headIcon = document.createElement('span')
+        headIcon.classList.add('headIcon')
+        node.appendChild(headIcon)
+      }else if((remainder === 5 || remainder === 0)){
+        node = document.createElement('div')
+        node.classList.add('graph')
+        node.textContent = pointer.data
+      }else if(quotient % 2 !== 1 && remainder > 0){
+        node = document.createElement('div')
+        node.classList.add('graph')
+        node.textContent = pointer.data
+        const leftArrow = document.createElement('span')
+        leftArrow.classList.add('leftArrow')
+        node.appendChild(leftArrow)
+      }else if(quotient % 2 === 1 && remainder > 0){
+        node = document.createElement('div')
+        node.classList.add('graph')
+        node.textContent = pointer.data
+        const rightArrow = document.createElement('span')
+        rightArrow.classList.add('rightArrow')
+        node.appendChild(rightArrow)
+      }
+
+      const quotientOfLenght = Math.floor(nodeNumber/5) 
+      if(remainder === 4 && quotient !== quotientOfLenght){
+        const downArrow = document.createElement('span')
+        downArrow.classList.add('downArrow')
+        node.appendChild(downArrow)
+      }
+
+      row.appendChild(node)
+
+      if(remainder === 4 || i === nodeNumber - 1){
+        fullLogsContainer.appendChild(row)
+      }
+      pointer = pointer.next
+
     }
   })
 })()
