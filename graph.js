@@ -62,17 +62,22 @@ class LinkedList{
         break;
       }
     }
-
     if (hare === null || hare.next === null) {
       return false;
     }
-    tortoise = this.head
-    let endPoint = null
-    while(tortoise.id !== hare.id){
-      endPoint = hare
-      tortoise = tortoise.next
-      hare = hare.next
+    tortoise = this.head;
+    while (tortoise !== hare) {
+      tortoise = tortoise.next;
+      hare = hare.next;
     }
+    // Now, `tortoise` (or `hare`) is at the start of the cycle.
+  
+    // Step 3: Find the node that points back to the cycle start (the endPoint).
+    let endPoint = hare; // Start at the cycle start.
+    while (endPoint.next !== tortoise) {
+      endPoint = endPoint.next;
+    }
+      
     return{startPoint:tortoise,middlePoint:tortoise.next,endPoint:endPoint}
   }
 

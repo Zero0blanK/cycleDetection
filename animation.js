@@ -254,12 +254,29 @@ function clearBoxValue(){
         node = document.querySelector(`.graph[data-id="${endNodeId}"]`)
         const redDownArrow = document.createElement('span')
         redDownArrow.classList.add('redDownArrow')
-        node.appendChild(redDownArrow)
         const starterCycleNode = isCycle.startPoint
         const starterCycleElement = document.querySelector(`.graph[data-id="${starterCycleNode.id}"]`)
         const endPointPos = node.getBoundingClientRect()
         const startPointPos = starterCycleElement.getBoundingClientRect()
-        const xOffset = endPointPos - startPointPos
+        const xOffset = endPointPos.x - startPointPos.x
+        const yOffset = endPointPos.y - startPointPos.y
+        if(xOffset > 0 && yOffset === 0){
+          const leftArrow = document.createElement('span')
+          leftArrow.classList.add('redArrow')
+          leftArrow.style.width = (xOffset + 30) + 'px'
+          leftArrow.style.height = '30px'
+          leftArrow.style.right = '0px'
+          leftArrow.style.bottom = '0px'
+          const upArrow = document.createElement('span')
+          upArrow.classList.add('redArrow')
+          upArrow.style.width = '30px'
+          upArrow.style.height = '82px'
+          upArrow.style.left = '0px'
+          upArrow.style.bottom = '0px'
+          leftArrow.appendChild(upArrow)
+          redDownArrow.appendChild(leftArrow)
+        }
+        node.appendChild(redDownArrow)
       }
 
 
