@@ -12,6 +12,29 @@ class LinkedList{
     this.head = null
   }
 
+  getLength(){
+    const cycle = this.checkCycle()
+    let counter = 0;
+    if(cycle){
+      let pointer = this.head
+      counter++
+      while(pointer.id !== cycle.endPoint.id){
+        pointer = pointer.next
+        counter++;
+      }
+      return counter
+
+    }else{
+      let pointer = this.head
+      counter++
+      while(pointer.next !== null){
+        pointer = pointer.next
+        counter++
+      }
+      return counter
+    } 
+  }
+
   getLastThreeNodes(){
     if(this.head?.next?.next?.next === null||
       this.head?.next?.next?.next === undefined

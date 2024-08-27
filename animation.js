@@ -2,7 +2,7 @@ import { LinkedList } from "./graph.js";
 
 
 let linkedData;
-
+let ll;
 const hare = document.getElementById("hare");
 const turtle = document.getElementById("turtle");
 const cycleAnimation = document.getElementById("cycleAnimation");
@@ -147,8 +147,7 @@ async function getFile(){
       const linkedListValue = formattedArray[i].split(',')
       if(linkedListValue.length  === 3){
         linkedListObjects.push({id:linkedListValue[0],data:linkedListValue[1],next:linkedListValue[2]})
-
-      }
+      } 
     }
     return linkedListObjects
 }
@@ -184,6 +183,17 @@ function clearBoxValue(){
   logsButton.addEventListener('click',()=>{
     container.classList.add('hidden')
     title.textContent = 'Cycle Detection (Logs)'
+    const nodeNumber  = ll.getLength()
+    let row;
+    for(let i = 0;i< nodeNumber;i++){
+      if(i === 0){
+        row = document.createElement('div')
+        row.classList.add('graphContainer')
+        row.classList.add('row')
+      }
+      const quotient = i/5
+      if(quotient % 2 ===0)return
+    }
   })
 })()
 
@@ -201,7 +211,7 @@ function activate() {
   clearAnimation()
 // let say ang kaning timer is execution sa cycle detection if cycle detected e true niya ang condition else kay false 
   linkedData = getTableData()
-  const ll = new LinkedList()
+  ll = new LinkedList()
   ll.createGraph(linkedData)
   let isCycle = ll.checkCycle();
   const threeNodes = ll.getLastThreeNodes()
