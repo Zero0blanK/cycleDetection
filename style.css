@@ -391,3 +391,71 @@ th, td {
 .error.active{
     visibility: visible;
 }
+
+.fullLogsContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 180px  260px;
+}
+
+.graphContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 122px;
+    gap: 140px;
+}
+
+.graphContainer.row{
+    flex-direction: row;
+}
+
+.graphContainer.rowReverse{
+    flex-direction: row-reverse;
+}
+
+.graph{
+    position: relative;
+    background-color: #047E02;
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+    font-size: 64px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.graph > .leftArrow{
+    position: absolute;
+    top: 68px;
+    right: 159px;
+    height: 30px;
+    width: 142px;
+    background-color: white;
+}
+
+.graph > .rightArrow{
+    position: absolute;
+    top: 68px;
+    left: 159px;
+    height: 30px;
+    width: 142px;
+    background-color: white;
+}
+
+
+.graph > .downArrow{
+    position: absolute;
+    top: 160px;
+    left: 64px;
+    width: 30px;
+    height: 122px;
+    background-color: white;
+}
+
+
+
+
+
