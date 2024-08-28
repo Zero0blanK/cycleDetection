@@ -192,7 +192,7 @@ function clearBoxValue(){
     let pointer = ll.head;
     for(let i = 0;i< nodeNumber;i++){
       
-      const quotient = Math.floor(i/5)
+      const quotient = Math.floor(i /5)
       const remainder = i % 5
       if(quotient % 2 !== 1 && (remainder === 5 || remainder === 0)){
         row = document.createElement('div')
@@ -234,7 +234,7 @@ function clearBoxValue(){
         node.appendChild(rightArrow)
       }
 
-      const quotientOfLenght = Math.floor(nodeNumber/5) 
+      const quotientOfLenght = Math.floor((nodeNumber -1)/5) 
       if(remainder === 4 && quotient !== quotientOfLenght && nodeNumber > 5){
         const downArrow = document.createElement('span')
         downArrow.classList.add('downArrow')
@@ -275,6 +275,50 @@ function clearBoxValue(){
           upArrow.style.bottom = '0px'
           leftArrow.appendChild(upArrow)
           redDownArrow.appendChild(leftArrow)
+        }else if(xOffset < 0 && yOffset ===0){
+          const rightArrow = document.createElement('span')
+          rightArrow.classList.add('redArrow')
+          rightArrow.style.width = (Math.abs(xOffset) + 30) + 'px'
+          rightArrow.style.height = '30px'
+          rightArrow.style.left = '0px'
+          rightArrow.style.bottom = '0px'
+          const upArrow = document.createElement('span')
+          upArrow.classList.add('redArrow')
+          upArrow.style.width = '30px'
+          upArrow.style.height = '82px'
+          upArrow.style.right = '0px'
+          upArrow.style.bottom = '0px'
+          rightArrow.appendChild(upArrow)
+          redDownArrow.appendChild(rightArrow)
+        }else if(yOffset > 0){
+          const rightArrow = document.createElement('span')
+          rightArrow.classList.add('redArrow')
+          rightArrow.style.width = (1700-endPointPos.x) + 'px'
+          rightArrow.style.height = '30px'
+          rightArrow.style.left = '0px'
+          rightArrow.style.bottom = '0px'
+          const upArrow = document.createElement('span')
+          upArrow.classList.add('redArrow')
+          upArrow.style.width = '30px'
+          upArrow.style.height = (yOffset + 30) + 'px'
+          upArrow.style.right = '0px'
+          upArrow.style.bottom = '0px'
+          const leftArrow = document.createElement('span')
+          leftArrow.classList.add('redArrow')
+          leftArrow.style.width = (1700 - startPointPos.x) + 'px'
+          leftArrow.style.height = '30px'
+          leftArrow.style.right = '0px'
+          leftArrow.style.top = '0px'
+          const upArrow2 = document.createElement('span')
+          upArrow2.classList.add('redArrow')
+          upArrow2.style.width = '30px'
+          upArrow2.style.height = '82px'
+          upArrow2.style.left = '0px'
+          upArrow2.style.bottom = '0px'
+          leftArrow.appendChild(upArrow2)
+          upArrow.appendChild(leftArrow)
+          rightArrow.appendChild(upArrow)
+          redDownArrow.appendChild(rightArrow)
         }
         node.appendChild(redDownArrow)
       }

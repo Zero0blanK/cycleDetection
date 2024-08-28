@@ -80,7 +80,7 @@ h1{
 .btn-container{
     display: flex;
     justify-content: space-between;
-    padding: 0px 600px;
+    padding: 0px 550px;
     align-items: center;
     height: 85vh;
 }
