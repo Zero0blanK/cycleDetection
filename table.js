@@ -13,6 +13,19 @@ import {clearAnimation,clearBoxValue, hideLogsButton} from './animation.js'
     }
 })();
 
+
+document.getElementById('dataInput').addEventListener('keydown', (event) =>{
+    if (event.key === 'Enter'){
+        addRow()
+    }
+});
+document.getElementById('nextNodeInput').addEventListener('keydown', (event) =>{
+    if (event.key === 'Enter'){
+        addRow()
+    }
+});
+
+
 function addRow() {
     const data = document.getElementById('dataInput').value.trim();
     const nextNode = document.getElementById('nextNodeInput').value.trim();
