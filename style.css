@@ -395,7 +395,7 @@ th, td {
 .fullLogsContainer{
     display: flex;
     flex-direction: column;
-    padding: 180px  260px;
+    padding: 180px  259px;
 }
 
 .graphContainer{
