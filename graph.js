@@ -83,13 +83,18 @@ class LinkedList{
 
   createGraph(array){
     if(array === undefined||array.length === 0) return
+    const nodeArray = []
     array.forEach((data,index) => {
       if(index === 0){
         this.head = new Node(data.id,data.data,null)
-      }else{
-        this.insertNode(data.id,data.data,data.next)
+      }else{  
+        nodeArray.push({id: data.id,data:data.data,next:data.next})
       }                                                                                                                              
-    });
+      })
+    nodeArray.forEach((data)=>{
+      this.insertNode(data.id,data.data,data.next)
+    })
+    ;
   }
 
   getNode(nextId){
