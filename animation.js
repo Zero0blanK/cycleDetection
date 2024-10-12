@@ -346,7 +346,11 @@ function activate() {
   linkedData = getTableData()
   ll = new LinkedList()
   ll.createGraph(linkedData)
+  const startTime = Date.now()
   let isCycle = ll.checkCycle();
+  const endTime = Date.now()
+  const time = endTime - startTime;
+  console.log(time + "ms")
   const threeNodes = ll.getLastThreeNodes()
   if(linkedData === false 
     || linkedData === undefined 
