@@ -10,6 +10,8 @@ class Node{
 class LinkedList{
   constructor(){
     this.head = null
+    this.tail = null
+    this.nodeMap = {  }
   }
 
   getLength(){
@@ -83,51 +85,48 @@ class LinkedList{
 
   createGraph(array){
     if(array === undefined||array.length === 0) return
-    const nodeArray = []
+
     array.forEach((data,index) => {
       if(index === 0){
         this.head = new Node(data.id,data.data,null)
+        this.tail = this.head;
+        this.nodeMap[data.id] = this.head
       }else{  
-        nodeArray.push({id: data.id,data:data.data,next:data.next})
+        this.insertNode(data.id,data.data,data.next)
+        
       }                                                                                                                              
       })
-    nodeArray.forEach((data)=>{
-      this.insertNode(data.id,data.data,data.next)
-    })
-    ;
+
+    
   }
 
   getNode(nextId){
     if(this.head === null) return
-    let pointer = this.head
-    while(pointer.next !==null){
-      if(pointer.id === nextId) return pointer
-      pointer = pointer.next
+    let node = this.nodeMap[nextId]
+    if(node){
+      return node
     }
     return null
   }
 
   insertNode(id,data,next){
-    if(this.checkCycle()) return
+    if(this.tail.next !== null) return
+
     if(this.head === null) return
-    let pointer = this.head
-    while(pointer.next !== null){
-      pointer = pointer.next
-    }
-    pointer.next = new Node(id,data,null)
+    let temp = new Node(id,data,null)
+    this.tail.next = temp;
+    this.tail = temp
+    this.nodeMap[id] = temp
+    
     if(next !== 'null'){
-       pointer = pointer.next
-       pointer.next = this.getNode(next)
+       this.tail.next = this.getNode(next)
     }
   }
 
   checkIfIdExisted(id){
     if(this.head === null || this.head.next ===null) return false
-    let pointer = this.head.next
-    while(pointer.next !== null  ) {
-      if(pointer.next === id) return true
-      pointer = pointer.next
-    }
+    let pointer = this.nodeMap[id]
+    if(pointer && pointer !== undefined) return true
     return false
   }
   
