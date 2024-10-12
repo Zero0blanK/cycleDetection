@@ -242,7 +242,7 @@ function clearBoxValue(){
       }
       
       
-      node.setAttribute('data-id',pointer.id)
+      node.setAttribute('data-id',pointer.id.trim())
       row.appendChild(node)
       
       if(remainder === 4 || i === nodeNumber - 1){
@@ -250,12 +250,12 @@ function clearBoxValue(){
       }
       
       if(isCycle && i === nodeNumber-1){
-        const endNodeId = isCycle.endPoint.id
+        const endNodeId = isCycle.endPoint.id.trim()
         node = document.querySelector(`.graph[data-id="${endNodeId}"]`)
         const redDownArrow = document.createElement('span')
         redDownArrow.classList.add('redDownArrow')
         const starterCycleNode = isCycle.startPoint
-        const starterCycleElement = document.querySelector(`.graph[data-id="${starterCycleNode.id}"]`)
+        const starterCycleElement = document.querySelector(`.graph[data-id="${starterCycleNode.id.trim()}"]`)
         const endPointPos = node.getBoundingClientRect()
         const startPointPos = starterCycleElement.getBoundingClientRect()
         const xOffset = endPointPos.x - startPointPos.x
